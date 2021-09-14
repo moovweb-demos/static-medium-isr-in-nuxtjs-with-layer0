@@ -22,7 +22,7 @@
       </span>
     </div>
   </div>
-  <LazyPlaceholder v-else>
+  <LazyPlaceholder v-else />
 </template>
 
 <script>
@@ -77,26 +77,26 @@ export default {
         {
           hid: 'url',
           name: 'url',
-          content: `https://rishi-raj-jain-try-default.layer0.link/${this.slug}`,
+          content: `https://rishi-raj-jain-try-without-static.layer0.link/${this.slug}`,
         },
         {
           hid: 'og:url',
           name: 'og:url',
           property: 'og:url',
-          content: `https://rishi-raj-jain-try-default.layer0.link/${this.slug}`,
+          content: `https://rishi-raj-jain-try-without-static.layer0.link/${this.slug}`,
         },
         {
           hid: 'twitter:url',
           name: 'twitter:url',
           property: 'twitter:url',
-          content: `https://rishi-raj-jain-try-default.layer0.link/${this.slug}`,
+          content: `https://rishi-raj-jain-try-without-static.layer0.link/${this.slug}`,
         },
       ],
     }
   },
   async fetch() {
     this.slug = this.$nuxt.context.params.slug
-    let resp = await fetch(`https://rishi-raj-jain-try-default.layer0.link/api/blogs/${this.slug}.json`).then((res) => res.json())
+    let resp = await fetch(`https://rishi-raj-jain-try-without-static.layer0.link/api/blogs/${this.slug}.json`).then((res) => res.json())
     console.log(resp)
     if (resp['code'] == 0) this.$nuxt.redirect(404, '/error')
     this.resp = resp['resp']
@@ -104,7 +104,7 @@ export default {
       window.__client__= false
       console.log('Client Side Transition, Populating the cache...')
       // cache the HTML on the edge (limitations of nuxt)
-      fetch(`https://rishi-raj-jain-try-default.layer0.link/blogs/${this.slug}`)
+      fetch(`https://rishi-raj-jain-try-without-static.layer0.link/blogs/${this.slug}`)
     }
   },
 }
